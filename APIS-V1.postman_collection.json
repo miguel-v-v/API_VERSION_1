@@ -1,0 +1,2011 @@
+{
+  "info": {
+    "_postman_id": "ee5d5edf-0c11-4077-80e0-340a931e306f",
+    "name": "APIS-V1",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "45053605"
+  },
+  "item": [
+    {
+      "name": "Onboarding Cliente",
+      "item": [
+        {
+          "name": "VALIDACIÓN TELÉFONO/CORREO",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"testcmpagos26@yopmail.com\",\n    \"phone\": \"5541424346\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api-qa.conceptopagos.com/cpagos-customer-portal-api-endpoint-ws/rest/v1/signin/validateUser",
+              "protocol": "https",
+              "host": [
+                "api-qa",
+                "conceptopagos",
+                "com"
+              ],
+              "path": [
+                "cpagos-customer-portal-api-endpoint-ws",
+                "rest",
+                "v1",
+                "signin",
+                "validateUser"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PROSPECT TRACKING",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "//  PHONE_NUMBER_VERIFIED  , PERSONAL_INFO_OK , EMAIL_VERIFIED,MERCHANT_FORM_CAPTURED,VALIDATED_IDENTITY\n{\n    \"id\": null,\n    \"prospectStatus\": \"VALIDATED_IDENTITY\",\n    \"originIp\": \"10.1.1.1\",\n    \"utmInfo\": null,\n    \"landing\": \"MAIN_PAGE\",\n    \"phone\": \"5509015622\",\n    \"email\": \"diegoverdura@yopmail.com\",\n    \"name\": \"Miguel\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api-qa.conceptopagos.com/cpagos-customer-portal-api-endpoint-ws/rest/v1/signin/prospecttracking",
+              "protocol": "https",
+              "host": [
+                "api-qa",
+                "conceptopagos",
+                "com"
+              ],
+              "path": [
+                "cpagos-customer-portal-api-endpoint-ws",
+                "rest",
+                "v1",
+                "signin",
+                "prospecttracking"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ENVIÓ DE CÓDIGO",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    //1 sms - 2 - email\n    \"country\": \"Mexico\",\n    \"platform\": 1,\n    \"receiver\": \"5541424344\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api-qa.conceptopagos.com/cpagos-customer-portal-api-endpoint-ws/rest/v1/2fa/generate-code",
+              "protocol": "https",
+              "host": [
+                "api-qa",
+                "conceptopagos",
+                "com"
+              ],
+              "path": [
+                "cpagos-customer-portal-api-endpoint-ws",
+                "rest",
+                "v1",
+                "2fa",
+                "generate-code"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "VALIDACIÓN CÓDIGO",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"pinCode\": \"965254\",\n    \"receiver\": \"5541424344\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api-qa.conceptopagos.com/cpagos-customer-portal-api-endpoint-ws/rest/v1/2fa/validate-code",
+              "protocol": "https",
+              "host": [
+                "api-qa",
+                "conceptopagos",
+                "com"
+              ],
+              "path": [
+                "cpagos-customer-portal-api-endpoint-ws",
+                "rest",
+                "v1",
+                "2fa",
+                "validate-code"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "CREACIÓN DE CUENTA",
+          "protocolProfileBehavior": {
+            "disabledSystemHeaders": {
+              "connection": true
+            }
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"testcmpagos25@yopmail.com\",\n    \"name\": \"Pedro\",\n    \"lastName\": \"Sanson\",\n    \"secondLastName\": \"Viscareno\",\n    \"phoneNumber\": \"5541424344\",\n    \"prospectTrackingId\": 676,\n    \"merchantName\": \"Tienda de cebollas\",\n    \"streetName\": \"Calle 5\",\n    \"streetNumber\": \"5\",\n    \"streetSubnumber\": 2,\n    \"localityId\": 1,\n    \"businessActivityId\": 1,\n    \"password\": \"Desarrollo9*\",\n    \"dataKeysTO\": {\n        \"nonce\": \"ZAGFOJAhpCU-g-G0ARexeeCa-1i-oUht5AIqmttE\",\n        \"rsa\": \"MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAwlgwkvPsA3XvaZVHSp+ZbSUb1MJl9l597QyS3QTheuZOUrAnd9AVDyuKdEPky/ZlfNJwDX3qCvCyxWzteyLGHR7CpNCe9niHaDv1mHQkwXifQ8N5VpUsRFn2LdwXDNYKcfAUtmhIPV7H0QhwkWbbJAciUX1BjoEkj2oQkEqRUdyjet+2JLawxakBq8oay4ZUWVGq5fM4T0yKmUshCDJgwr9oIeDSdW6oWwq+LGObzL0drrfsZLgibAiB+lw4X1b5F4tWqnOANwFDiYi75w3OY28jUIQAF5u6xodto2RddWq2u0koIZt4ITsZvq8Gk/UdgHHcUZtB5qKNUsziC61HsbmU4y2SpcNQi0s7A3fNrehAPQV+/nnlZionUPOCvT/XPn5hrrkZ6DKJYgc/jo3x2K2L4STelUIjsSoJYs1zjrPDgaxpGmNnJIdGVghJX88CXAXwtZ5ZZ4EjkQKQcHlVinZeDZgzwERKCufxWOLPD6lS/OojgmmkuBKmUqrS2nCnoDQNF1sUvE+EwGZzMeVEzvuSB6FxVlldes85MIL7mBohoRqJeaqFhyHhz+OMxWHCNlQC89p0HKcZ2pasWZEGsLva6OGMxexjAH63ZMqgPDMqjf7Mm2JlRxLyG/vQXYnroVr65wz1UlkidcfbvY1NG8UX8EHbfYDHz09jYzo80FcCAwEAAQ==\",\n        \"urlWebhook\": \"https://api-qa.conceptopagos.com/cpagos-payment-gateway-ecm-api-endpoint-ws/rest/v1/api/webhook-test\"\n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api-qa.conceptopagos.com/cpagos-customer-portal-api-endpoint-ws/rest/v1/signin/create",
+              "protocol": "https",
+              "host": [
+                "api-qa",
+                "conceptopagos",
+                "com"
+              ],
+              "path": [
+                "cpagos-customer-portal-api-endpoint-ws",
+                "rest",
+                "v1",
+                "signin",
+                "create"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Catálogos",
+      "item": [
+        {
+          "name": "COLONIAS",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var template = `\r",
+                  "<style type=\"text/css\">\r",
+                  "    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+                  "    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+                  "    .tftable tr {background-color:#ffffff;}\r",
+                  "    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+                  "    .tftable tr:hover {background-color:#e0ffff;}\r",
+                  "</style>\r",
+                  "\r",
+                  "<table class=\"tftable\" border=\"1\">\r",
+                  "    <tr>\r",
+                  "        <th>City ID</th>\r",
+                  "        <th>City Name</th>\r",
+                  "        <th>Country ID</th>\r",
+                  "        <th>Country Name</th>\r",
+                  "        <th>Locality ID</th>\r",
+                  "        <th>Locality Name</th>\r",
+                  "        <th>Postal Code</th>\r",
+                  "        <th>State ID</th>\r",
+                  "        <th>State Name</th>\r",
+                  "    </tr>\r",
+                  "    \r",
+                  "    {{#each response}}\r",
+                  "        <tr>\r",
+                  "            <td>{{city_id}}</td>\r",
+                  "            <td>{{city_name}}</td>\r",
+                  "            <td>{{country_id}}</td>\r",
+                  "            <td>{{country_name}}</td>\r",
+                  "            <td>{{locality_id}}</td>\r",
+                  "            <td>{{locality_name}}</td>\r",
+                  "            <td>{{postal_code}}</td>\r",
+                  "            <td>{{state_id}}</td>\r",
+                  "            <td>{{state_name}}</td>\r",
+                  "        </tr>\r",
+                  "    {{/each}}\r",
+                  "</table>\r",
+                  "`;\r",
+                  "\r",
+                  "function constructVisualizerPayload() {\r",
+                  "    return { response: pm.response.json() }\r",
+                  "}\r",
+                  "\r",
+                  "pm.visualizer.set(template, constructVisualizerPayload());"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api-qa.conceptopagos.com/cpagos-customer-portal-api-endpoint-ws/rest/v1/catalog/locality?postalcode=07509",
+              "protocol": "https",
+              "host": [
+                "api-qa",
+                "conceptopagos",
+                "com"
+              ],
+              "path": [
+                "cpagos-customer-portal-api-endpoint-ws",
+                "rest",
+                "v1",
+                "catalog",
+                "locality"
+              ],
+              "query": [
+                {
+                  "key": "postalcode",
+                  "value": "07509"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ACTIVIDADES",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api-qa.conceptopagos.com/cpagos-customer-portal-api-endpoint-ws/rest/v1/catalog/businessactivity?id=5",
+              "protocol": "https",
+              "host": [
+                "api-qa",
+                "conceptopagos",
+                "com"
+              ],
+              "path": [
+                "cpagos-customer-portal-api-endpoint-ws",
+                "rest",
+                "v1",
+                "catalog",
+                "businessactivity"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "5"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GIROS",
+          "protocolProfileBehavior": {
+            "disabledSystemHeaders": {}
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://dashboard-qa.conceptopagos.com/cpagos-customer-portal-endpoint-ws/rest/v1/catalog/businessline",
+              "protocol": "https",
+              "host": [
+                "dashboard-qa",
+                "conceptopagos",
+                "com"
+              ],
+              "path": [
+                "cpagos-customer-portal-endpoint-ws",
+                "rest",
+                "v1",
+                "catalog",
+                "businessline"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Complementos",
+      "item": [
+        {
+          "name": "LOGIN",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"keysFound\":true,\n    \"email\": \"miguel.vergara@conceptomovil.com\",\n    \"password\": \"Desarrollo7!!\",\n    \"rsa\":\"MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAwlgwkvPsA3XvaZVHSp+ZbSUb1MJl9l597QyS3QTheuZOUrAnd9AVDyuKdEPky/ZlfNJwDX3qCvCyxWzteyLGHR7CpNCe9niHaDv1mHQkwXifQ8N5VpUsRFn2LdwXDNYKcfAUtmhIPV7H0QhwkWbbJAciUX1BjoEkj2oQkEqRUdyjet+2JLawxakBq8oay4ZUWVGq5fM4T0yKmUshCDJgwr9oIeDSdW6oWwq+LGObzL0drrfsZLgibAiB+lw4X1b5F4tWqnOANwFDiYi75w3OY28jUIQAF5u6xodto2RddWq2u0koIZt4ITsZvq8Gk/UdgHHcUZtB5qKNUsziC61HsbmU4y2SpcNQi0s7A3fNrehAPQV+/nnlZionUPOCvT/XPn5hrrkZ6DKJYgc/jo3x2K2L4STelUIjsSoJYs1zjrPDgaxpGmNnJIdGVghJX88CXAXwtZ5ZZ4EjkQKQcHlVinZeDZgzwERKCufxWOLPD6lS/OojgmmkuBKmUqrS2nCnoDQNF1sUvE+EwGZzMeVEzvuSB6FxVlldes85MIL7mBohoRqJeaqFhyHhz+OMxWHCNlQC89p0HKcZ2pasWZEGsLva6OGMxexjAH63ZMqgPDMqjf7Mm2JlRxLyG/vQXYnroVr65wz1UlkidcfbvY1NG8UX8EHbfYDHz09jYzo80FcCAwEAAQ==\"\n\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api-qa.conceptopagos.com/cpagos-customer-portal-api-endpoint-ws/rest/v1/external/login-platform",
+              "protocol": "https",
+              "host": [
+                "api-qa",
+                "conceptopagos",
+                "com"
+              ],
+              "path": [
+                "cpagos-customer-portal-api-endpoint-ws",
+                "rest",
+                "v1",
+                "external",
+                "login-platform"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "VALIDACIÓN LLAVES EXISTENTES",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"testcmpagos14@yopmail.com\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api-qa.conceptopagos.com/cpagos-customer-portal-api-endpoint-ws/rest/v1/external/validateKeys",
+              "protocol": "https",
+              "host": [
+                "api-qa",
+                "conceptopagos",
+                "com"
+              ],
+              "path": [
+                "cpagos-customer-portal-api-endpoint-ws",
+                "rest",
+                "v1",
+                "external",
+                "validateKeys"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DESCONECTAR",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \n    \"email\": \"testcmpagos22@yopmail.com\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api-qa.conceptopagos.com/cpagos-customer-portal-api-endpoint-ws/rest/v1/external/disconnect-platform",
+              "protocol": "https",
+              "host": [
+                "api-qa",
+                "conceptopagos",
+                "com"
+              ],
+              "path": [
+                "cpagos-customer-portal-api-endpoint-ws",
+                "rest",
+                "v1",
+                "external",
+                "disconnect-platform"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Autenticación",
+      "item": [
+        {
+          "name": "TOKEN",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const responseJson = pm.response.json();",
+                  "pm.globals.set(\"authorization\", responseJson.accessToken);",
+                  "pm.globals.set(\"accessKeyId\", responseJson.accessKeyId);",
+                  "pm.globals.set(\"secretAccessKey\", responseJson.secretAccessKey);",
+                  "",
+                  "console.log(\"secretAccessKey:\", pm.environment.get(\"secretAccessKey\"));"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "cpagos-merchant-id",
+                "value": "{{merchantRegistrationId}}"
+              },
+              {
+                "key": "cpagos-application-id",
+                "value": "{{applicationId}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "client_id",
+                  "value": "{{clientId}}",
+                  "type": "text",
+                  "uuid": "3420edf9-f14d-4b78-8fae-2a00010666be"
+                },
+                {
+                  "key": "client_secret",
+                  "value": "{{clientSecret}}",
+                  "type": "text",
+                  "uuid": "209af3a3-865e-443e-8efb-8016dca9d791"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/cpagos-payment-gateway-ecm-api-endpoint-ws/rest/v1/authentication/token-generation",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cpagos-payment-gateway-ecm-api-endpoint-ws",
+                "rest",
+                "v1",
+                "authentication",
+                "token-generation"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "SIGNATURE",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const signature = pm.response.text();",
+                  "pm.globals.set(\"signature\", signature);"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "accessKeyToken",
+                "value": "{{accessKeyId}}"
+              },
+              {
+                "key": "secretKeyToken",
+                "value": "{{secretAccessKey}}"
+              },
+              {
+                "key": "merchantRegistrationId",
+                "value": "{{merchantRegistrationId}}"
+              },
+              {
+                "key": "timestamp",
+                "value": "2024-05-14 10:00:00"
+              },
+              {
+                "key": "secretKey",
+                "value": "{{secretKey}}",
+                "description": "client_id"
+              },
+              {
+                "key": "nonce",
+                "value": "{{merchantRegistrationId}}"
+              },
+              {
+                "key": "applicationId",
+                "value": "{{applicationId}}"
+              }
+            ],
+            "url": {
+              "raw": "https://api-qa.conceptopagos.com/cpagos-payment-gateway-ecm-api-endpoint-ws/rest/v1/authentication/signature-generate",
+              "protocol": "https",
+              "host": [
+                "api-qa",
+                "conceptopagos",
+                "com"
+              ],
+              "path": [
+                "cpagos-payment-gateway-ecm-api-endpoint-ws",
+                "rest",
+                "v1",
+                "authentication",
+                "signature-generate"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Transacciones",
+      "item": [
+        {
+          "name": "LINK DE PAGO",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{authorization}}"
+              },
+              {
+                "key": "cpagos-nonce",
+                "value": "{{merchantRegistrationId}}"
+              },
+              {
+                "key": "cpagos-signature",
+                "value": "{{signature}}"
+              },
+              {
+                "key": "cpagos-merchant-id",
+                "value": "{{merchantRegistrationId}}"
+              },
+              {
+                "key": "cpagos-timestamp",
+                "value": "2024-05-14 10:00:00"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"amount\" : 200.00,\n    \"concept\" : \"pr 11 junio\",\n    \"typeBackendId\" : \"MULTIPAYMENT\",\n    \"transactionReference\":\"PAGO2026\" // No mayor a 50 caracteres, Es obligatorio\n    ,\"expirationLink\":{   //Si quiero mandar el link sin expiración se manda NULL el expirationLink\n      //\"daysToExpire\":1   //Puro numero\n      \"dateToExpire\":\"11/06/2026\" // formatoDd/mm/yyyy\n                //Solo se manda uno u otro y el que no se manda debe mandarse como NULL\n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api-qa.conceptopagos.com/cpagos-payment-gateway-ecm-api-endpoint-ws/rest/v1/payment-link/generate",
+              "protocol": "https",
+              "host": [
+                "api-qa",
+                "conceptopagos",
+                "com"
+              ],
+              "path": [
+                "cpagos-payment-gateway-ecm-api-endpoint-ws",
+                "rest",
+                "v1",
+                "payment-link",
+                "generate"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "TRANSACTION TOKEN",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "{{authorization}}"
+              },
+              {
+                "key": "cpagos-nonce",
+                "value": "{{merchantRegistrationId}}"
+              },
+              {
+                "key": "cpagos-signature",
+                "value": "{{signature}}"
+              },
+              {
+                "key": "cpagos-merchant-id",
+                "value": "{{merchantRegistrationId}}"
+              },
+              {
+                "key": "cpagos-timestamp",
+                "value": "2024-05-14 10:00:00"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n     \"concept\": \"Prueba regresion 30\",\n     \"amount\": 1000.00\n     ,\"transactionReferemce\": \"tx1\" //Opcional\n     ,\"customerReference\": \"cl1\"  //Opcional\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api-qa.conceptopagos.com/cpagos-payment-gateway-ecm-api-endpoint-ws/rest/v1/api/transaction-token",
+              "protocol": "https",
+              "host": [
+                "api-qa",
+                "conceptopagos",
+                "com"
+              ],
+              "path": [
+                "cpagos-payment-gateway-ecm-api-endpoint-ws",
+                "rest",
+                "v1",
+                "api",
+                "transaction-token"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Reportes",
+      "item": [
+        {
+          "name": "REPORTE - LINK DE PAGO",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "cpagos-merchant-id",
+                "value": "{{merchantRegistrationId}}"
+              },
+              {
+                "key": "cpagos-timestamp",
+                "value": "2024-05-14 10:00:00"
+              },
+              {
+                "key": "cpagos-signature",
+                "value": "{{signature}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "cpagos-nonce",
+                "value": "{{merchantRegistrationId}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{authorization}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"concept\" : \"\",\n    \"status_backend_id\":\"\",\n    \"start_date\":\"2026-04-01\",\n    \"end_date\":\"2026-04-16\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api-qa.conceptopagos.com/cpagos-payment-gateway-ecm-api-endpoint-ws/rest/v1/api/reports/payment-link",
+              "protocol": "https",
+              "host": [
+                "api-qa",
+                "conceptopagos",
+                "com"
+              ],
+              "path": [
+                "cpagos-payment-gateway-ecm-api-endpoint-ws",
+                "rest",
+                "v1",
+                "api",
+                "reports",
+                "payment-link"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "REPORTE - TRANSACCIONES",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "cpagos-merchant-id",
+                "value": "{{merchantRegistrationId}}"
+              },
+              {
+                "key": "cpagos-timestamp",
+                "value": "2024-05-14 10:00:00"
+              },
+              {
+                "key": "cpagos-signature",
+                "value": "{{signature}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "cpagos-nonce",
+                "value": "{{merchantRegistrationId}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{authorization}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"concept\" : \"\",\n    \"status_backend_id\":\"\",\n    \"product\":\"\",\n    \"start_date\":\"2026-09-10\",\n    \"end_date\":\"2026-09-15\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api-qa.conceptopagos.com/cpagos-payment-gateway-ecm-api-endpoint-ws/rest/v1/api/reports/transactions",
+              "protocol": "https",
+              "host": [
+                "api-qa",
+                "conceptopagos",
+                "com"
+              ],
+              "path": [
+                "cpagos-payment-gateway-ecm-api-endpoint-ws",
+                "rest",
+                "v1",
+                "api",
+                "reports",
+                "transactions"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "REPORTE - CARGOS RECURRENTES",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "cpagos-merchant-id",
+                "value": "{{merchantRegistrationId}}"
+              },
+              {
+                "key": "cpagos-timestamp",
+                "value": "2024-05-14 10:00:00"
+              },
+              {
+                "key": "cpagos-signature",
+                "value": "{{signature}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "cpagos-nonce",
+                "value": "{{merchantRegistrationId}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{authorization}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"concept\" : \"\",\n    \"status_backend_id\":\"\",\n    \"start_date\":\"2026-09-01\",\n    \"end_date\":\"2026-09-16\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api-qa.conceptopagos.com/cpagos-payment-gateway-ecm-api-endpoint-ws/rest/v1/api/reports/recurring-payments",
+              "protocol": "https",
+              "host": [
+                "api-qa",
+                "conceptopagos",
+                "com"
+              ],
+              "path": [
+                "cpagos-payment-gateway-ecm-api-endpoint-ws",
+                "rest",
+                "v1",
+                "api",
+                "reports",
+                "recurring-payments"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "REPORTE - CARGOS RECURRENTES V2",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "cpagos-merchant-id",
+                "value": "{{merchantRegistrationId}}"
+              },
+              {
+                "key": "cpagos-timestamp",
+                "value": "2024-05-14 10:00:00"
+              },
+              {
+                "key": "cpagos-signature",
+                "value": "{{signature}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "cpagos-nonce",
+                "value": "{{merchantRegistrationId}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{authorization}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"concept\" : \"\",\n    \"status\": \"\",\n    \"startDate\":\"2026-07-01\",\n    \"endDate\":\"2026-07-15\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api-qa.conceptopagos.com/cpagos-payment-gateway-ecm-api-endpoint-ws/rest/v1/api/reports/recurring-payments-v2",
+              "protocol": "https",
+              "host": [
+                "api-qa",
+                "conceptopagos",
+                "com"
+              ],
+              "path": [
+                "cpagos-payment-gateway-ecm-api-endpoint-ws",
+                "rest",
+                "v1",
+                "api",
+                "reports",
+                "recurring-payments-v2"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Suscripciones",
+      "item": [
+        {
+          "name": "CARGOS RECURRENTES",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const responseJson = pm.response.json();\r",
+                  "pm.globals.set(\"recurringPaymentToken\", responseJson.recurringPaymentToken);"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "cpagos-merchant-id",
+                "value": "{{merchantRegistrationId}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{authorization}}"
+              },
+              {
+                "key": "cpagos-signature",
+                "value": "{{signature}}"
+              },
+              {
+                "key": "cpagos-nonce",
+                "value": "{{merchantRegistrationId}}"
+              },
+              {
+                "key": "cpagos-timestamp",
+                "value": "2024-05-14 10:00:00"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"concept\" : \"regresion del 15\",\n    \"amount\" : 1000.00,\n    \"description\" : \"prueba api SEMANAL\",\n    \"undefinedTerm\" : false,\n    \"term\" : 2,\n    \"intervalBackendId\" : \"WEEK\"\n\n}"
+            },
+            "url": {
+              "raw": "https://api-qa.conceptopagos.com/cpagos-payment-gateway-ecm-api-endpoint-ws/rest/v1/api/recurring-payment",
+              "protocol": "https",
+              "host": [
+                "api-qa",
+                "conceptopagos",
+                "com"
+              ],
+              "path": [
+                "cpagos-payment-gateway-ecm-api-endpoint-ws",
+                "rest",
+                "v1",
+                "api",
+                "recurring-payment"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "SUSCRIPCIÓN",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "cpagos-merchant-id",
+                "value": "06E049ECB71347"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{authorization}}"
+              },
+              {
+                "key": "cpagos-signature",
+                "value": "{{signature}}"
+              },
+              {
+                "key": "cpagos-nonce",
+                "value": "06E049ECB71347"
+              },
+              {
+                "key": "cpagos-timestamp",
+                "value": "2024-05-14 10:00:00"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"recurringPaymentToken\" : \"{{recurringPaymentToken}}\",\n    \"subscriberName\" : \"mike\",\n    \"subscriberEmail\": \"miguel.vergara@conceptomovil.com\",\n    \"subscriberPhoneNumber\" : \"5588789001\",\n    \"transactionReference\" : \"REGRESIONHOY\" //Max 50 y opcional\n}"
+            },
+            "url": {
+              "raw": "https://api-qa.conceptopagos.com/cpagos-payment-gateway-ecm-api-endpoint-ws/rest/v1/api/recurring-payment/subscription",
+              "protocol": "https",
+              "host": [
+                "api-qa",
+                "conceptopagos",
+                "com"
+              ],
+              "path": [
+                "cpagos-payment-gateway-ecm-api-endpoint-ws",
+                "rest",
+                "v1",
+                "api",
+                "recurring-payment",
+                "subscription"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "SUSCRIPTORES",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "cpagos-merchant-id",
+                "value": "{{merchantRegistrationId}}"
+              },
+              {
+                "key": "cpagos-timestamp",
+                "value": "2024-05-14 10:00:00"
+              },
+              {
+                "key": "cpagos-signature",
+                "value": "{{signature}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "cpagos-nonce",
+                "value": "{{merchantRegistrationId}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{authorization}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"concept\" : \"\", //Opcional\n    \"name\":\"\", //Opcional\n    \"startDate\":\"2026-05-01\",\n    \"endDate\":\"2026-05-15\"\n}"
+            },
+            "url": {
+              "raw": "https://api-qa.conceptopagos.com/cpagos-payment-gateway-ecm-api-endpoint-ws/rest/v1/api/reports/subscribers",
+              "protocol": "https",
+              "host": [
+                "api-qa",
+                "conceptopagos",
+                "com"
+              ],
+              "path": [
+                "cpagos-payment-gateway-ecm-api-endpoint-ws",
+                "rest",
+                "v1",
+                "api",
+                "reports",
+                "subscribers"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "SUSCRIPTORES POR SUSCRIPCIÓN",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "cpagos-merchant-id",
+                "value": "{{merchantRegistrationId}}"
+              },
+              {
+                "key": "cpagos-timestamp",
+                "value": "2024-05-14 10:00:00"
+              },
+              {
+                "key": "cpagos-signature",
+                "value": "{{signature}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "cpagos-nonce",
+                "value": "{{merchantRegistrationId}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{authorization}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"id\" : \"e8ec6154-9388-4492-b361-78c7828dc6c5\", //es el code de cargos recurrentes\n    \"name\":\"\",\n    \"startDate\":\"2026-09-15\",\n    \"endDate\":\"2026-09-15\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api-qa.conceptopagos.com/cpagos-payment-gateway-ecm-api-endpoint-ws/rest/v1/api/reports/subscribers-by-payment",
+              "protocol": "https",
+              "host": [
+                "api-qa",
+                "conceptopagos",
+                "com"
+              ],
+              "path": [
+                "cpagos-payment-gateway-ecm-api-endpoint-ws",
+                "rest",
+                "v1",
+                "api",
+                "reports",
+                "subscribers-by-payment"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PAGOS DE SUSCRIPCIÓN",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "cpagos-merchant-id",
+                "value": "{{merchantRegistrationId}}"
+              },
+              {
+                "key": "cpagos-timestamp",
+                "value": "2024-05-14 10:00:00"
+              },
+              {
+                "key": "cpagos-signature",
+                "value": "{{signature}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "cpagos-nonce",
+                "value": "{{merchantRegistrationId}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{authorization}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"concept\" : \"\", //Opcional\n    \"name\":\"\", //Opcional\n    \"startDate\":\"2025-07-01\",\n    \"endDate\":\"2025-07-24\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api-qa.conceptopagos.com/cpagos-payment-gateway-ecm-api-endpoint-ws/rest/v1/api/reports/subscription-payments",
+              "protocol": "https",
+              "host": [
+                "api-qa",
+                "conceptopagos",
+                "com"
+              ],
+              "path": [
+                "cpagos-payment-gateway-ecm-api-endpoint-ws",
+                "rest",
+                "v1",
+                "api",
+                "reports",
+                "subscription-payments"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PAGOS DE SUSCRIPCIÓN POR SUSCRIPTOR",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "cpagos-merchant-id",
+                "value": "{{merchantRegistrationId}}"
+              },
+              {
+                "key": "cpagos-timestamp",
+                "value": "2024-05-14 10:00:00"
+              },
+              {
+                "key": "cpagos-signature",
+                "value": "{{signature}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "cpagos-nonce",
+                "value": "{{merchantRegistrationId}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{authorization}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"id\" : \"8c5fa20d-229f-4397-b69f-0c6907736459\", //suscription code\n    \"startDate\":\"2026-09-01\",\n    \"endDate\":\"2026-09-15\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api-qa.conceptopagos.com/cpagos-payment-gateway-ecm-api-endpoint-ws/rest/v1/api/reports/subscription-payments-by-subscriber",
+              "protocol": "https",
+              "host": [
+                "api-qa",
+                "conceptopagos",
+                "com"
+              ],
+              "path": [
+                "cpagos-payment-gateway-ecm-api-endpoint-ws",
+                "rest",
+                "v1",
+                "api",
+                "reports",
+                "subscription-payments-by-subscriber"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PAGOS DE SUSCRIPCIÓN POR SUSCRIPCIÓN",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "cpagos-merchant-id",
+                "value": "{{merchantRegistrationId}}"
+              },
+              {
+                "key": "cpagos-timestamp",
+                "value": "2024-05-14 10:00:00"
+              },
+              {
+                "key": "cpagos-signature",
+                "value": "{{signature}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "cpagos-nonce",
+                "value": "{{merchantRegistrationId}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{authorization}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"id\" : \"eceed0f9-b723-4047-bc8e-3e5577734e4a\", //code cargos recurrentes\n    \"name\":\"\",\n    \"startDate\":\"2026-07-01\",\n    \"endDate\":\"2026-07-15\"\n}"
+            },
+            "url": {
+              "raw": "https://api-qa.conceptopagos.com/cpagos-payment-gateway-ecm-api-endpoint-ws/rest/v1/api/reports/subscription-payments-by-payment",
+              "protocol": "https",
+              "host": [
+                "api-qa",
+                "conceptopagos",
+                "com"
+              ],
+              "path": [
+                "cpagos-payment-gateway-ecm-api-endpoint-ws",
+                "rest",
+                "v1",
+                "api",
+                "reports",
+                "subscription-payments-by-payment"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DESACTIVAR CARGO RECURRENTE",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "cpagos-merchant-id",
+                "value": "a6968d42-c483-4268-9991-983ea299be7f"
+              },
+              {
+                "key": "cpagos-timestamp",
+                "value": "2024-05-14 10:00:00"
+              },
+              {
+                "key": "cpagos-signature",
+                "value": "{{signature}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "cpagos-nonce",
+                "value": "123456789"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{authorization}}"
+              }
+            ],
+            "url": {
+              "raw": "https://api-qa.conceptopagos.com/cpagos-payment-gateway-ecm-api-endpoint-ws/rest/v1/api/recurring-payment/disable-payment?token=06eb9b8036a3d7f3ad44c5e914f6e834efb6a22995eb393701303f8c88a88ef2c406ed5eeee0c56a1fabf5b55f38e649de84979ff0e687f0b63a6ba95a6649a2",
+              "protocol": "https",
+              "host": [
+                "api-qa",
+                "conceptopagos",
+                "com"
+              ],
+              "path": [
+                "cpagos-payment-gateway-ecm-api-endpoint-ws",
+                "rest",
+                "v1",
+                "api",
+                "recurring-payment",
+                "disable-payment"
+              ],
+              "query": [
+                {
+                  "key": "token",
+                  "value": "06eb9b8036a3d7f3ad44c5e914f6e834efb6a22995eb393701303f8c88a88ef2c406ed5eeee0c56a1fabf5b55f38e649de84979ff0e687f0b63a6ba95a6649a2"
+                }
+              ]
+            },
+            "description": "Generated from cURL: curl --location --request PUT 'https://pago-dev.conceptopagos.com/cpagos-payment-gateway-ecm-endpoint-ws/rest/v1/api/recurring-payment/disable-payment?token=960bfabce385c031ed019e3580710a5a05da262d0eeb624094619728fc82b5aa18330f696b531dcef1c380378210ff46fed053b3aa2a35d4f90edbadbb9e83de' \\\n--header 'cpagos-merchant-id: 14c65ef3-5ec2-4d15-9858-f38b2c19981a' \\\n--header 'cpagos-timestamp: 2024-05-14 10:00:00' \\\n--header 'cpagos-signature: 329D00F1D7D8C25AD25D91149E198F7FF17F07047D9DC24ADAC8DF107A5FA312798F2B01AB8A999B5070D1DA2EB3309A6403B114C82B37888FCBDCF5B42D3D0B' \\\n--header 'Content-Type: application/json' \\\n--header 'cpagos-nonce: 123456789' \\\n--header 'Authorization: eyJhbGciOiJSUzUxMiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJlMlV6aTA3NlZyRE03MWFJUHBlWEE5VW9qUFNELWFUNXl6Y2FLODY1ZTRZIn0.eyJleHAiOjE3NTM4MDY3NDAsImlhdCI6MTc1MzgwNjQ0MCwianRpIjoidHJydGNjOmUzZDBlYTQwLWE4YzgtNDJjZi1iNDhkLTJjNjBiN2E3YzY0ZCIsImlzcyI6Imh0dHBzOi8vYXV0aC1kZXYuY29uY2VwdG9wYWdvcy5jb20vc3NvL3JlYWxtcy9jcGFnb3MtYXV0aC1hcGktcmVhbG0iLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiMTQ2MDQxMjQtNDk5Mi00NGYzLWE0NjUtZmFmZTkzNDIzYTdiIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiY3BhZ29zX2VjbV9hcGlfY2xpZW50IiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIvKiJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJkZWZhdWx0LXJvbGVzLWNwYWdvcy1hdXRoLWFwaS1yZWFsbSIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwiY2xpZW50SG9zdCI6IjEwLjAuMTA3LjIwNiIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwicHJlZmVycmVkX3VzZXJuYW1lIjoic2VydmljZS1hY2NvdW50LWNwYWdvc19lY21fYXBpX2NsaWVudCIsImNsaWVudEFkZHJlc3MiOiIxMC4wLjEwNy4yMDYiLCJjbGllbnRfaWQiOiJjcGFnb3NfZWNtX2FwaV9jbGllbnQifQ.rDqBYJNYvRGs9x83AlGSmnBw3qJpfjFqRtgVVCVb5z06yIyYVYCWhYu0EwCQnf4mF73oII96Y3ZoBXXUv4U0eQ4dc8Okqky3lHcG_Wv_cS0lxEDrOpSH9jPPON0ckSGgw23QDoPoXaPhpZ7yPg4Jf3a20qFXxJjhRbw5rKTvCTSkeAtQzFHH8hNmFB-wIThGekx5DAlj7wPDqp8UzmpbzoJrl72l25bzUI2EDZDidi7oy1ITcW971afEbKgZZc7t9VkwE0mJnmTcQtmzaUVSK_UQBqls-_s65Ku-wwAcIx6tq6GE6UBNgv5Sx8HIdrFE5eecJq5DZ5Ytdru909QutA'"
+          },
+          "response": []
+        },
+        {
+          "name": "DESACTIVAR SUSCRIPTOR",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "cpagos-merchant-id",
+                "value": "{{merchantRegistrationId}}"
+              },
+              {
+                "key": "cpagos-timestamp",
+                "value": "2024-05-14 10:00:00"
+              },
+              {
+                "key": "cpagos-signature",
+                "value": "{{signature}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "cpagos-nonce",
+                "value": "{{merchantRegistrationId}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{authorization}}"
+              }
+            ],
+            "url": {
+              "raw": "https://api-qa.conceptopagos.com/cpagos-payment-gateway-ecm-api-endpoint-ws/rest/v1/api/recurring-payment/disable?token=a37b99b6b0603e3468b5823248b634ea45a6bfc010c5cde8ca9ed63b99c3c0fa8d14c98fc2e40aed13ba349c1eaab98f508586d0f289dd6d39d4dd3b72ac2a51",
+              "protocol": "https",
+              "host": [
+                "api-qa",
+                "conceptopagos",
+                "com"
+              ],
+              "path": [
+                "cpagos-payment-gateway-ecm-api-endpoint-ws",
+                "rest",
+                "v1",
+                "api",
+                "recurring-payment",
+                "disable"
+              ],
+              "query": [
+                {
+                  "key": "token",
+                  "value": "a37b99b6b0603e3468b5823248b634ea45a6bfc010c5cde8ca9ed63b99c3c0fa8d14c98fc2e40aed13ba349c1eaab98f508586d0f289dd6d39d4dd3b72ac2a51"
+                }
+              ]
+            },
+            "description": "Generated from cURL: curl --location --request PUT 'https://pago-dev.conceptopagos.com/cpagos-payment-gateway-ecm-endpoint-ws/rest/v1/api/recurring-payment/disable-payment?token=960bfabce385c031ed019e3580710a5a05da262d0eeb624094619728fc82b5aa18330f696b531dcef1c380378210ff46fed053b3aa2a35d4f90edbadbb9e83de' \\\n--header 'cpagos-merchant-id: 14c65ef3-5ec2-4d15-9858-f38b2c19981a' \\\n--header 'cpagos-timestamp: 2024-05-14 10:00:00' \\\n--header 'cpagos-signature: 329D00F1D7D8C25AD25D91149E198F7FF17F07047D9DC24ADAC8DF107A5FA312798F2B01AB8A999B5070D1DA2EB3309A6403B114C82B37888FCBDCF5B42D3D0B' \\\n--header 'Content-Type: application/json' \\\n--header 'cpagos-nonce: 123456789' \\\n--header 'Authorization: eyJhbGciOiJSUzUxMiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJlMlV6aTA3NlZyRE03MWFJUHBlWEE5VW9qUFNELWFUNXl6Y2FLODY1ZTRZIn0.eyJleHAiOjE3NTM4MDY3NDAsImlhdCI6MTc1MzgwNjQ0MCwianRpIjoidHJydGNjOmUzZDBlYTQwLWE4YzgtNDJjZi1iNDhkLTJjNjBiN2E3YzY0ZCIsImlzcyI6Imh0dHBzOi8vYXV0aC1kZXYuY29uY2VwdG9wYWdvcy5jb20vc3NvL3JlYWxtcy9jcGFnb3MtYXV0aC1hcGktcmVhbG0iLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiMTQ2MDQxMjQtNDk5Mi00NGYzLWE0NjUtZmFmZTkzNDIzYTdiIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiY3BhZ29zX2VjbV9hcGlfY2xpZW50IiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIvKiJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJkZWZhdWx0LXJvbGVzLWNwYWdvcy1hdXRoLWFwaS1yZWFsbSIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwiY2xpZW50SG9zdCI6IjEwLjAuMTA3LjIwNiIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwicHJlZmVycmVkX3VzZXJuYW1lIjoic2VydmljZS1hY2NvdW50LWNwYWdvc19lY21fYXBpX2NsaWVudCIsImNsaWVudEFkZHJlc3MiOiIxMC4wLjEwNy4yMDYiLCJjbGllbnRfaWQiOiJjcGFnb3NfZWNtX2FwaV9jbGllbnQifQ.rDqBYJNYvRGs9x83AlGSmnBw3qJpfjFqRtgVVCVb5z06yIyYVYCWhYu0EwCQnf4mF73oII96Y3ZoBXXUv4U0eQ4dc8Okqky3lHcG_Wv_cS0lxEDrOpSH9jPPON0ckSGgw23QDoPoXaPhpZ7yPg4Jf3a20qFXxJjhRbw5rKTvCTSkeAtQzFHH8hNmFB-wIThGekx5DAlj7wPDqp8UzmpbzoJrl72l25bzUI2EDZDidi7oy1ITcW971afEbKgZZc7t9VkwE0mJnmTcQtmzaUVSK_UQBqls-_s65Ku-wwAcIx6tq6GE6UBNgv5Sx8HIdrFE5eecJq5DZ5Ytdru909QutA'"
+          },
+          "response": []
+        },
+        {
+          "name": "CARGO RECCURENTE",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "cpagos-merchant-id",
+                "value": "a6968d42-c483-4268-9991-983ea299be7f"
+              },
+              {
+                "key": "cpagos-component-backen-id",
+                "value": "CUSTOMER_PORTAL_BACKEND"
+              },
+              {
+                "key": "cpagos-component-api-key",
+                "value": "ABCDEFGHIJ0123456789"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"concept\" : \"Pago recurrente  3\",\n    \"amount\" : 1000.0,\n    \"description\" : \"Descripcion pago por ser QA y ya\",\n    \"undefinedTerm\" : true,\n    \n    \"firstPaymentDay\" : false,\n    \"day\" : \"1\",\n    \"frecuency\" : 1,\n    \"intervalBackendId\" : \"WEEK\"\n\n}"
+            },
+            "url": {
+              "raw": "https://api-qa.conceptopagos.com/cpagos-payment-gateway-ecm-api-endpoint-ws/rest/v1/internal/recurring-payment/generate",
+              "protocol": "https",
+              "host": [
+                "api-qa",
+                "conceptopagos",
+                "com"
+              ],
+              "path": [
+                "cpagos-payment-gateway-ecm-api-endpoint-ws",
+                "rest",
+                "v1",
+                "internal",
+                "recurring-payment",
+                "generate"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "SSUSCRIPCIÓN CHECKOUT",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "cpagos-merchant-id",
+                "value": "a6968d42-c483-4268-9991-983ea299be7f"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "cpagos-device-session-id",
+                "value": "7A5271786D377170696D514C6C384F35745866713654574C4C476E4B545A4338496B696676364E77556F64734F394F72673231554B317A3957687539526D4B565130424C4E424B3879647648704C5447354E38706F61526E577A694145665052717A526C4A736F4A4E4D7167326A71446443764D477A6D41763461426730484D"
+              },
+              {
+                "key": "Authorization",
+                "value": "eyJhbGciOiJSUzUxMiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJlMlV6aTA3NlZyRE03MWFJUHBlWEE5VW9qUFNELWFUNXl6Y2FLODY1ZTRZIn0.eyJleHAiOjE3MjczNzI5MTYsImlhdCI6MTcyNzM3MjYxNiwianRpIjoiZjc4N2UxNGQtYjJjOC00OGRkLWEyMDEtMjNkMzg0NGM1NDkxIiwiaXNzIjoiaHR0cHM6Ly9hdXRoLWRldi5jb25jZXB0b3BhZ29zLmNvbS9zc28vcmVhbG1zL2NwYWdvcy1hdXRoLWFwaS1yZWFsbSIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiIxNDYwNDEyNC00OTkyLTQ0ZjMtYTQ2NS1mYWZlOTM0MjNhN2IiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJjcGFnb3NfZWNtX2FwaV9jbGllbnQiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbIi8qIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsImRlZmF1bHQtcm9sZXMtY3BhZ29zLWF1dGgtYXBpLXJlYWxtIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImNsaWVudEhvc3QiOiIxMC4wLjEwNy4xODIiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJzZXJ2aWNlLWFjY291bnQtY3BhZ29zX2VjbV9hcGlfY2xpZW50IiwiY2xpZW50QWRkcmVzcyI6IjEwLjAuMTA3LjE4MiIsImNsaWVudF9pZCI6ImNwYWdvc19lY21fYXBpX2NsaWVudCJ9.cjpHM0PGnaF6nsVSh3L-kxyrGuYcO_dipQGg8foQlV3oqhbxoE5sJ7DP0L_87v-zjr_qGutvzFZXUefxBfnZO3t7Rr3AeKqWYrIwlzweysFxk9rY-6OU7XYC4eXRSQ93vYTVLdNnti0-7A5A8_A0FmNYR-JdYH8J0FBTnelioVM85ZHW3gZ-by0ftsQI1JefoxQv28t5lDoh4VWU12pzPf-v5dV-Wu6KVFXvhFAh-jmIPsX1gfO0iq-gb8Z1d1VzxKlFbR1rRnHehr8DpYK0Mhs2ZUJjymBZxGC1mferFwHW-ztQmvwCA7xBhE9IOTCbr9i32RHYSCUbmJgZfqYqzQ"
+              },
+              {
+                "key": "cpagos-is-checkout",
+                "value": "0"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"cardNumber\":\"4000000000002370\",\n    \"cardVerificationValue\" : \"311\",\n\t\"expirationDate\":\"1227\",\n\t\"brand\":\"VISA\",\n\t\"cardIssuer\":\"BBVA\",\n\t\"nature\":\"DÉBITO\",\n    \"requestLocalDate\":\"22/05/2024,10:10:43\",\n\t\"flag3ds\":true,\n\t\"amountTx\":\"10\",\n\t\"concept\":\"Concepto PR\",\n\t\"cardHolderName\":\"Iver antonio Lopez\",\n\t\"subscriptionToken\":\"d21221620c1d53adbd0e76fa8f97a89a37837b19bfe36b7315a5476119759594b7a48c25ac93f3cba0bee3dd1da64c44ff077d7a20b3f809a63259c69e88be5c\",\n    \"initialPeriodDate\":\"2024-11-01\",\n    \"finalPeriodDate\":\"2024-11-15\"\n\n}"
+            },
+            "url": {
+              "raw": "https://api-qa.conceptopagos.com/cpagos-payment-gateway-ecm-api-endpoint-ws/rest/v1/api/recurring-payment/subscription-checkout",
+              "protocol": "https",
+              "host": [
+                "api-qa",
+                "conceptopagos",
+                "com"
+              ],
+              "path": [
+                "cpagos-payment-gateway-ecm-api-endpoint-ws",
+                "rest",
+                "v1",
+                "api",
+                "recurring-payment",
+                "subscription-checkout"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Webhook",
+      "item": [
+        {
+          "name": "https://pago-qa.conceptopagos.com/cpagos-payment-gateway-ecm-api-endpoint-ws/rest/v1/api/webhook",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api-qa.conceptopagos.com/cpagos-payment-gateway-ecm-api-endpoint-ws/rest/v1/api/webhook/event",
+              "protocol": "https",
+              "host": [
+                "api-qa",
+                "conceptopagos",
+                "com"
+              ],
+              "path": [
+                "cpagos-payment-gateway-ecm-api-endpoint-ws",
+                "rest",
+                "v1",
+                "api",
+                "webhook",
+                "event"
+              ]
+            },
+            "description": "Generated from cURL: curl --location 'https://pago-qa.conceptopagos.com/cpagos-payment-gateway-ecm-api-endpoint-ws/rest/v1/api/webhook'"
+          },
+          "response": []
+        },
+        {
+          "name": "https://pago-qa.conceptopagos.com/cpagos-payment-gateway-ecm-api-endpoint-ws/rest/v1/api/webhook",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"merchantId\":\"013b2258-34e5-4bf6-b6b5-27a3c4e9258a\",\n    \"url\": \"https://webhook.site/69752901-3cea-4238-ba11-c21814a29d9c\",\n    \"webHookType\": \"34\",\n    \"event\": \"1,2,3,34\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api-qa.conceptopagos.com/cpagos-payment-gateway-ecm-api-endpoint-ws/rest/v1/api/webhook",
+              "protocol": "https",
+              "host": [
+                "api-qa",
+                "conceptopagos",
+                "com"
+              ],
+              "path": [
+                "cpagos-payment-gateway-ecm-api-endpoint-ws",
+                "rest",
+                "v1",
+                "api",
+                "webhook"
+              ]
+            },
+            "description": "Generated from cURL: curl --location 'https://pago-qa.conceptopagos.com/cpagos-payment-gateway-ecm-api-endpoint-ws/rest/v1/api/webhook' \\\n--header 'Content-Type: application/json' \\\n--data '{\n    \"merchantId\": \"a203c112-ae80-43fb-8f06-6e0747614d2d\",\n    \"url\": \"https://pago-dev.conceptopagos.com/cpagos-payment-gateway-ecm-api-endpoint-ws/rest/v1/api/webhook1\",\n    \"webHookType\": \"1\",\n    \"event\": \"1\"\n}'"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "SDK",
+      "item": [
+        {
+          "name": "ver_tarjetas",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "cpagos-merchant-id",
+                "value": "{{merchantRegistrationId}}"
+              },
+              {
+                "key": "client-reference",
+                "value": "ba7512dd-9ad9-4b44-ac07-7e9e7da5f944"
+              },
+              {
+                "key": "cpagos-signature",
+                "value": "{{signature}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{authorization}}"
+              },
+              {
+                "key": "cpagos-nonce",
+                "value": "{{merchantRegistrationId}}"
+              },
+              {
+                "key": "cpagos-timestamp",
+                "value": "2024-05-14 10:00:00"
+              }
+            ],
+            "url": {
+              "raw": "https://api-qa.conceptopagos.com/cpagos-payment-gateway-ecm-api-endpoint-ws/rest/v1/checkout/cards",
+              "protocol": "https",
+              "host": [
+                "api-qa",
+                "conceptopagos",
+                "com"
+              ],
+              "path": [
+                "cpagos-payment-gateway-ecm-api-endpoint-ws",
+                "rest",
+                "v1",
+                "checkout",
+                "cards"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "TTP",
+      "item": [
+        {
+          "name": "UPDATE ENROLL",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "cpagos-merchant-id",
+                "value": "{{merchantRegistrationId}}"
+              },
+              {
+                "key": "cpagos-timestamp",
+                "value": "2024-05-14 10:00:00"
+              },
+              {
+                "key": "cpagos-signature",
+                "value": "{{signature}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "cpagos-nonce",
+                "value": "{{merchantRegistrationId}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{authorization}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"serialNumber\": \"555e0fa3-6857-479f-9ff7-45fba62dc711\",\n    \"enrollmentResponse\": \"TiendasDon\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api-qa.conceptopagos.com/cpagos-payment-gateway-ecm-api-endpoint-ws/rest/v1/api/tap-to-phone/device",
+              "protocol": "https",
+              "host": [
+                "api-qa",
+                "conceptopagos",
+                "com"
+              ],
+              "path": [
+                "cpagos-payment-gateway-ecm-api-endpoint-ws",
+                "rest",
+                "v1",
+                "api",
+                "tap-to-phone",
+                "device"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Generar tx",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "cpagos-merchant-id",
+                "value": "{{merchantRegistrationId}}"
+              },
+              {
+                "key": "cpagos-timestamp",
+                "value": "2024-05-14 10:00:00"
+              },
+              {
+                "key": "cpagos-signature",
+                "value": "{{signature}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "cpagos-nonce",
+                "value": "{{merchantRegistrationId}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{authorization}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"serialNumber\": \"555e0fa3-6857-479f-9ff7-45fba62dc711\",\n    \"amount\": 420,\n    \"concept\": \"Prueb tt  api A LAS 9:09 PM \",\n    \"user\": \"miguel.vergara@conceptomovil.com\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api-qa.conceptopagos.com/cpagos-payment-gateway-ecm-api-endpoint-ws/rest/v1/api/tap-to-phone/generate-transaction",
+              "protocol": "https",
+              "host": [
+                "api-qa",
+                "conceptopagos",
+                "com"
+              ],
+              "path": [
+                "cpagos-payment-gateway-ecm-api-endpoint-ws",
+                "rest",
+                "v1",
+                "api",
+                "tap-to-phone",
+                "generate-transaction"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Finaalizar transaccion",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "cpagos-merchant-id",
+                "value": "{{merchantRegistrationId}}"
+              },
+              {
+                "key": "cpagos-timestamp",
+                "value": "2024-05-14 10:00:00"
+              },
+              {
+                "key": "cpagos-signature",
+                "value": "{{signature}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "cpagos-nonce",
+                "value": "{{merchantRegistrationId}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{authorization}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"transactionId\": \"A00000018835\",\n    \"success\": true,\n    \"debit\": false,\n    \"transactionDate\": \"19-05-2026 11:12:00\",\n    \"transactionDateUTC\": \"19-05-2026 17:12:00\",\n    \"transactionResponse\": \"3210D\",\n    \"transactionRequestId\": \"2132D\"\n    \n   ,\"card\": \"407559XXXXXX3764\"       \n}\n\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api-qa.conceptopagos.com/cpagos-payment-gateway-ecm-api-endpoint-ws/rest/v1/api/tap-to-phone/finish-transaction",
+              "protocol": "https",
+              "host": [
+                "api-qa",
+                "conceptopagos",
+                "com"
+              ],
+              "path": [
+                "cpagos-payment-gateway-ecm-api-endpoint-ws",
+                "rest",
+                "v1",
+                "api",
+                "tap-to-phone",
+                "finish-transaction"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ENRROLL",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "cpagos-merchant-id",
+                "value": "{{merchantRegistrationId}}"
+              },
+              {
+                "key": "cpagos-timestamp",
+                "value": "2024-05-14 10:00:00"
+              },
+              {
+                "key": "cpagos-signature",
+                "value": "{{signature}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "cpagos-nonce",
+                "value": "{{merchantRegistrationId}}"
+              },
+              {
+                "key": "Authorization",
+                "value": "{{authorization}}"
+              }
+            ],
+            "url": {
+              "raw": "https://api-qa.conceptopagos.com/cpagos-payment-gateway-ecm-api-endpoint-ws/rest/v1/api/tap-to-phone/device/555e0fa3-6857-479f-9ff7-45fba62dc711",
+              "protocol": "https",
+              "host": [
+                "api-qa",
+                "conceptopagos",
+                "com"
+              ],
+              "path": [
+                "cpagos-payment-gateway-ecm-api-endpoint-ws",
+                "rest",
+                "v1",
+                "api",
+                "tap-to-phone",
+                "device",
+                "555e0fa3-6857-479f-9ff7-45fba62dc711"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Cambio Password",
+      "item": [
+        {
+          "name": "New Request",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"abrcmpagos03@yopmail.com\",\n    \"password\": \"Desarrollo2!\",\n    \"newPassword\": \"Desarrollo3!\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api-qa.conceptopagos.com/cpagos-customer-portal-api-endpoint-ws/rest/v1/external/update-password",
+              "protocol": "https",
+              "host": [
+                "api-qa",
+                "conceptopagos",
+                "com"
+              ],
+              "path": [
+                "cpagos-customer-portal-api-endpoint-ws",
+                "rest",
+                "v1",
+                "external",
+                "update-password"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
